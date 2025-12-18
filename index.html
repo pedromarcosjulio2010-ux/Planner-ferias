@@ -1,136 +1,159 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meu Planner de Férias</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planner de Férias</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #fff;
-      padding: 20px;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+body {
+  margin: 0;
+  background: #0e0e0e;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 15px;
-    }
+h1 {
+  text-align: center;
+  padding: 20px 10px 10px;
+}
 
-    button {
-      background: #1f1f1f;
-      color: white;
-      border: none;
-      padding: 15px;
-      border-radius: 14px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.carousel {
+  display: flex;
+  width: 700%;
+  height: calc(100vh - 90px);
+  transition: transform 0.4s ease;
+}
 
-    button:hover {
-      background: #2c2c2c;
-    }
+.day {
+  width: 100vw;
+  padding: 20px;
+  overflow-y: auto;
+}
 
-    .day {
-      display: none;
-      margin-top: 20px;
-    }
+.day h2 {
+  text-align: center;
+  margin-bottom: 15px;
+}
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
+.card {
+  background: #1f1f1f;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 
-    li {
-      background: #1f1f1f;
-      margin-bottom: 10px;
-      padding: 12px;
-      border-radius: 12px;
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
+input {
+  transform: scale(1.2);
+}
 
-    input[type="checkbox"] {
-      transform: scale(1.2);
-    }
-
-    .back {
-      margin-top: 20px;
-      background: #333;
-    }
-  </style>
+.hint {
+  text-align: center;
+  font-size: 13px;
+  opacity: 0.6;
+  margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
 <h1>📁 Meu Planner de Férias</h1>
 
-<div class="grid" id="menu">
-  <button onclick="openDay('academia')">Segunda</button>
-  <button onclick="openDay('academia')">Terça</button>
-  <button onclick="openDay('vo')">Quarta</button>
-  <button onclick="openDay('academia')">Quinta</button>
-  <button onclick="openDay('academia')">Sábado</button>
-  <button onclick="openDay('vo')">Domingo</button>
-</div>
+<div class="carousel" id="carousel">
 
-<!-- ROTINA ACADEMIA -->
-<div id="academia" class="day">
-  <h2>🏋️ Rotina do Dia</h2>
-  <ul>
-    <li><input type="checkbox">08:00 – 08:30 • Acordar, higiene, café</li>
-    <li><input type="checkbox">08:30 – 10:00 • Academia</li>
-    <li><input type="checkbox">10:00 – 11:00 • Banho + descanso</li>
-    <li><input type="checkbox">11:00 – 12:00 • Arrumar a casa</li>
-    <li><input type="checkbox">12:00 – 13:00 • Preparar e almoçar</li>
-    <li><input type="checkbox">13:00 – 14:00 • Almoço + descanso</li>
-    <li><input type="checkbox">14:00 – 15:00 • Estudo (1h)</li>
-    <li><input type="checkbox">15:00 – 16:00 • Caminhada</li>
-    <li><input type="checkbox">16:00 – 20:30 • Tempo livre / banho</li>
-    <li><input type="checkbox">21:00 • Jantar</li>
-    <li><input type="checkbox">23:00 • Dormir</li>
-  </ul>
-  <button class="back" onclick="goBack()">← Voltar</button>
-</div>
+  <!-- SEGUNDA -->
+  <div class="day">
+    <h2>Segunda</h2>
 
-<!-- ROTINA VISITA À VÓ -->
-<div id="vo" class="day">
-  <h2>👵 Visita à Vó</h2>
-  <ul>
-    <li><input type="checkbox">08:00 – 08:30 • Acordar + café</li>
-    <li><input type="checkbox">08:30 – 09:00 • Se arrumar e sair</li>
-    <li><input type="checkbox">09:00 – 13:00 • Visita à vó</li>
-    <li><input type="checkbox">13:00 – 14:00 • Almoço</li>
-    <li><input type="checkbox">14:00 – 17:30 • Tempo com a vó</li>
-    <li><input type="checkbox">17:30 – 18:00 • Voltar pra casa</li>
-    <li><input type="checkbox">18:00 – 19:00 • Banho + descanso</li>
-    <li><input type="checkbox">19:00 – 20:00 • Estudo (1h)</li>
-    <li><input type="checkbox">21:00 • Jantar</li>
-    <li><input type="checkbox">23:00 • Dormir</li>
-  </ul>
-  <button class="back" onclick="goBack()">← Voltar</button>
+    <div class="card"><input type="checkbox">08:00 – 08:30 • Acordar, café</div>
+    <div class="card"><input type="checkbox">08:30 – 10:00 • Academia</div>
+    <div class="card"><input type="checkbox">10:00 – 11:00 • Banho + descanso</div>
+    <div class="card"><input type="checkbox">11:00 – 12:00 • Arrumar a casa</div>
+    <div class="card"><input type="checkbox">12:00 – 13:00 • Almoço</div>
+    <div class="card"><input type="checkbox">14:00 – 15:00 • Estudo</div>
+    <div class="card"><input type="checkbox">15:00 – 16:00 • Caminhada</div>
+    <div class="card"><input type="checkbox">21:00 • Jantar</div>
+    <div class="card"><input type="checkbox">23:00 • Dormir</div>
+
+    <p class="hint">⬅ Arraste para o lado</p>
+  </div>
+
+  <!-- TERÇA -->
+  <div class="day">
+    <h2>Terça</h2>
+    <div class="card"><input type="checkbox">Rotina igual à segunda</div>
+    <p class="hint">⬅ ➡</p>
+  </div>
+
+  <!-- QUARTA -->
+  <div class="day">
+    <h2>Quarta — 👵 Vó</h2>
+    <div class="card"><input type="checkbox">08:00 – Café</div>
+    <div class="card"><input type="checkbox">09:00 – 13:00 • Visita à vó</div>
+    <div class="card"><input type="checkbox">14:00 – 17:30 • Tempo com ela</div>
+    <div class="card"><input type="checkbox">19:00 – 20:00 • Estudo</div>
+    <div class="card"><input type="checkbox">21:00 • Jantar</div>
+    <div class="card"><input type="checkbox">23:00 • Dormir</div>
+    <p class="hint">⬅ ➡</p>
+  </div>
+
+  <!-- QUINTA -->
+  <div class="day">
+    <h2>Quinta</h2>
+    <div class="card"><input type="checkbox">Rotina de academia</div>
+    <p class="hint">⬅ ➡</p>
+  </div>
+
+  <!-- SEXTA -->
+  <div class="day">
+    <h2>Sexta</h2>
+    <div class="card"><input type="checkbox">Livre / ajustar</div>
+    <p class="hint">⬅ ➡</p>
+  </div>
+
+  <!-- SÁBADO -->
+  <div class="day">
+    <h2>Sábado</h2>
+    <div class="card"><input type="checkbox">Rotina de academia</div>
+    <p class="hint">⬅ ➡</p>
+  </div>
+
+  <!-- DOMINGO -->
+  <div class="day">
+    <h2>Domingo — 👵 Vó</h2>
+    <div class="card"><input type="checkbox">Visita + descanso</div>
+    <p class="hint">➡ Fim</p>
+  </div>
+
 </div>
 
 <script>
-  function openDay(id) {
-    document.getElementById("menu").style.display = "none";
-    document.querySelectorAll(".day").forEach(d => d.style.display = "none");
-    document.getElementById(id).style.display = "block";
-  }
+let index = 0;
+let startX = 0;
+const carousel = document.getElementById("carousel");
 
-  function goBack() {
-    document.getElementById("menu").style.display = "grid";
-    document.querySelectorAll(".day").forEach(d => d.style.display = "none");
-  }
+document.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (diff > 50 && index < 6) index++;
+  if (diff < -50 && index > 0) index--;
+
+  carousel.style.transform = `translateX(-${index * 100}vw)`;
+});
 </script>
 
 </body>
