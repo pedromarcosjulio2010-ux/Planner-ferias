@@ -1,129 +1,136 @@
-  <!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meu Planner de Férias</title>
-<style>
-body {
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meu Planner de Férias</title>
 
-h1 {
-  margin-bottom: 20px;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      padding: 20px;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
 
-button {
-  background: #1e1e1e;
-  border: none;
-  border-radius: 12px;
-  padding: 20px;
-  font-size: 18px;
-  color: white;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+    }
 
-button:hover {
-  background: #333;
-}
+    button {
+      background: #1f1f1f;
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 14px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-.section {
-  display: none;
-}
+    button:hover {
+      background: #2c2c2c;
+    }
 
-ul {
-  text-align: left;
-}
+    .day {
+      display: none;
+      margin-top: 20px;
+    }
 
-.voltar {
-  margin-top: 20px;
-}
-</style>
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #1f1f1f;
+      margin-bottom: 10px;
+      padding: 12px;
+      border-radius: 12px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+    }
+
+    .back {
+      margin-top: 20px;
+      background: #333;
+    }
+  </style>
 </head>
 
 <body>
 
 <h1>📁 Meu Planner de Férias</h1>
 
-<div id="menu" class="grid">
-  <button onclick="abrirDia('segunda')">Segunda</button>
-  <button onclick="abrirDia('terca')">Terça</button>
-  <button onclick="abrirDia('quarta')">Quarta</button>
-  <button onclick="abrirDia('quinta')">Quinta</button>
-  <button onclick="abrirDia('sexta')">Sexta</button>
-  <button onclick="abrirDia('sabado')">Sábado</button>
-  <button onclick="abrirDia('domingo')">Domingo</button>
+<div class="grid" id="menu">
+  <button onclick="openDay('academia')">Segunda</button>
+  <button onclick="openDay('academia')">Terça</button>
+  <button onclick="openDay('vo')">Quarta</button>
+  <button onclick="openDay('academia')">Quinta</button>
+  <button onclick="openDay('academia')">Sábado</button>
+  <button onclick="openDay('vo')">Domingo</button>
 </div>
 
-<!-- DIAS -->
-<div id="segunda" class="section">
-  <h2>Segunda</h2>
+<!-- ROTINA ACADEMIA -->
+<div id="academia" class="day">
+  <h2>🏋️ Rotina do Dia</h2>
   <ul>
-    <li>08:00 – Acordar</li>
-    <li>09:00 – Academia</li>
-    <li>13:00 – Almoço</li>
-    <li>21:00 – Jantar</li>
-    <li>23:00 – Dormir</li>
+    <li><input type="checkbox">08:00 – 08:30 • Acordar, higiene, café</li>
+    <li><input type="checkbox">08:30 – 10:00 • Academia</li>
+    <li><input type="checkbox">10:00 – 11:00 • Banho + descanso</li>
+    <li><input type="checkbox">11:00 – 12:00 • Arrumar a casa</li>
+    <li><input type="checkbox">12:00 – 13:00 • Preparar e almoçar</li>
+    <li><input type="checkbox">13:00 – 14:00 • Almoço + descanso</li>
+    <li><input type="checkbox">14:00 – 15:00 • Estudo (1h)</li>
+    <li><input type="checkbox">15:00 – 16:00 • Caminhada</li>
+    <li><input type="checkbox">16:00 – 20:30 • Tempo livre / banho</li>
+    <li><input type="checkbox">21:00 • Jantar</li>
+    <li><input type="checkbox">23:00 • Dormir</li>
   </ul>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
+  <button class="back" onclick="goBack()">← Voltar</button>
 </div>
 
-<div id="terca" class="section">
-  <h2>Terça</h2>
-  <p>Rotina de terça aqui</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
-</div>
-
-<div id="quarta" class="section">
-  <h2>Quarta</h2>
-  <p>Rotina de quarta aqui</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
-</div>
-
-<div id="quinta" class="section">
-  <h2>Quinta</h2>
-  <p>Rotina de quinta aqui</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
-</div>
-
-<div id="sexta" class="section">
-  <h2>Sexta</h2>
-  <p>07:00–11:00 Curso</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
-</div>
-
-<div id="sabado" class="section">
-  <h2>Sábado</h2>
-  <p>Dia livre</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
-</div>
-
-<div id="domingo" class="section">
-  <h2>Domingo</h2>
-  <p>Descanso</p>
-  <button class="voltar" onclick="voltar()">← Voltar</button>
+<!-- ROTINA VISITA À VÓ -->
+<div id="vo" class="day">
+  <h2>👵 Visita à Vó</h2>
+  <ul>
+    <li><input type="checkbox">08:00 – 08:30 • Acordar + café</li>
+    <li><input type="checkbox">08:30 – 09:00 • Se arrumar e sair</li>
+    <li><input type="checkbox">09:00 – 13:00 • Visita à vó</li>
+    <li><input type="checkbox">13:00 – 14:00 • Almoço</li>
+    <li><input type="checkbox">14:00 – 17:30 • Tempo com a vó</li>
+    <li><input type="checkbox">17:30 – 18:00 • Voltar pra casa</li>
+    <li><input type="checkbox">18:00 – 19:00 • Banho + descanso</li>
+    <li><input type="checkbox">19:00 – 20:00 • Estudo (1h)</li>
+    <li><input type="checkbox">21:00 • Jantar</li>
+    <li><input type="checkbox">23:00 • Dormir</li>
+  </ul>
+  <button class="back" onclick="goBack()">← Voltar</button>
 </div>
 
 <script>
-function abrirDia(dia) {
-  document.getElementById("menu").style.display = "none";
-  document.querySelectorAll(".section").forEach(s => s.style.display = "none");
-  document.getElementById(dia).style.display = "block";
-}
+  function openDay(id) {
+    document.getElementById("menu").style.display = "none";
+    document.querySelectorAll(".day").forEach(d => d.style.display = "none");
+    document.getElementById(id).style.display = "block";
+  }
 
-function voltar() {
-  document.getElementById("menu").style.display = "grid";
-  document.querySelectorAll(".section").forEach(s => s.style.display = "none");
-}
+  function goBack() {
+    document.getElementById("menu").style.display = "grid";
+    document.querySelectorAll(".day").forEach(d => d.style.display = "none");
+  }
 </script>
 
 </body>
