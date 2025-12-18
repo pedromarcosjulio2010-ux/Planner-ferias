@@ -1,215 +1,130 @@
-<!DOCTYPE html><html lang="pt-BR">
+  <!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planner de Férias</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }h1 {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Planner de Férias</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: white;
   text-align: center;
+  padding: 20px;
+}
+
+h1 {
   margin-bottom: 20px;
 }
 
-.folders {
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
 
-.folder {
-  background: white;
+button {
+  background: #1e1e1e;
+  border: none;
   border-radius: 12px;
   padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.folder:hover {
-  transform: scale(1.05);
-}
-
-.day {
-  display: none;
-  margin-top: 20px;
-}
-
-.day.active {
-  display: block;
-}
-
-.task {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #000;
+  font-size: 18px;
   color: white;
-  cursor: pointer;
 }
 
-  </style>
+button:hover {
+  background: #333;
+}
+
+.section {
+  display: none;
+}
+
+ul {
+  text-align: left;
+}
+
+.voltar {
+  margin-top: 20px;
+}
+</style>
 </head>
-<body><h1>📁 Meu Planner de Férias</h1><div class="folders">
-  <div class="folder" onclick="openDay('segunda')">Segunda</div>
-  <div class="folder" onclick="openDay('terca')">Terça</div>
-  <div class="folder" onclick="openDay('quarta')">Quarta</div>
-  <div class="folder" onclick="openDay('quinta')">Quinta</div>
-  <div class="folder" onclick="openDay('sexta')">Sexta</div>
-  <div class="folder" onclick="openDay('sabado')">Sábado</div>
-  <div class="folder" onclick="openDay('domingo')">Domingo</div>
-</div><div id="segunda" class="day">
-  <h2>Segunda-feira</h2>
-  <div class="task"><input type="checkbox"> Academia</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-  <div class="task"><input type="checkbox"> Arrumar a casa</div>
-</div><div id="terca" class="day">
-  <h2>Terça-feira</h2>
-  <div class="task"><input type="checkbox"> Caminhada</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-</div><div id="quarta" class="day">
-  <h2>Quarta-feira</h2>
-  <div class="task"><input type="checkbox"> Academia</div>
-  <div class="task"><input type="checkbox"> Arrumar a casa</div>
-</div><div id="quinta" class="day">
-  <h2>Quinta-feira</h2>
-  <div class="task"><input type="checkbox"> Caminhada</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-</div><div id="sexta" class="day">
-  <h2>Sexta-feira</h2>
-  <div class="task"><input type="checkbox"> Curso (7h–11h)</div>
-</div><div id="sabado" class="day">
+
+<body>
+
+<h1>📁 Meu Planner de Férias</h1>
+
+<div id="menu" class="grid">
+  <button onclick="abrirDia('segunda')">Segunda</button>
+  <button onclick="abrirDia('terca')">Terça</button>
+  <button onclick="abrirDia('quarta')">Quarta</button>
+  <button onclick="abrirDia('quinta')">Quinta</button>
+  <button onclick="abrirDia('sexta')">Sexta</button>
+  <button onclick="abrirDia('sabado')">Sábado</button>
+  <button onclick="abrirDia('domingo')">Domingo</button>
+</div>
+
+<!-- DIAS -->
+<div id="segunda" class="section">
+  <h2>Segunda</h2>
+  <ul>
+    <li>08:00 – Acordar</li>
+    <li>09:00 – Academia</li>
+    <li>13:00 – Almoço</li>
+    <li>21:00 – Jantar</li>
+    <li>23:00 – Dormir</li>
+  </ul>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="terca" class="section">
+  <h2>Terça</h2>
+  <p>Rotina de terça aqui</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="quarta" class="section">
+  <h2>Quarta</h2>
+  <p>Rotina de quarta aqui</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="quinta" class="section">
+  <h2>Quinta</h2>
+  <p>Rotina de quinta aqui</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="sexta" class="section">
+  <h2>Sexta</h2>
+  <p>07:00–11:00 Curso</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="sabado" class="section">
   <h2>Sábado</h2>
-  <div class="task"><input type="checkbox"> Visitar minha vó</div>
-</div><div id="domingo" class="day">
+  <p>Dia livre</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
+
+<div id="domingo" class="section">
   <h2>Domingo</h2>
-  <div class="task"><input type="checkbox"> Descanso</div>
-</div><button onclick="closeAll()">⬅ Voltar</button>
+  <p>Descanso</p>
+  <button class="voltar" onclick="voltar()">← Voltar</button>
+</div>
 
 <script>
-  function openDay(day) {
-    document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
-    document.getElementById(day).classList.add('active');
-    window.scrollTo(0<!DOCTYPE html><html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Planner de Férias</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }h1 {
-  text-align: center;
-  margin-bottom: 20px;
+function abrirDia(dia) {
+  document.getElementById("menu").style.display = "none";
+  document.querySelectorAll(".section").forEach(s => s.style.display = "none");
+  document.getElementById(dia).style.display = "block";
 }
 
-.folders {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+function voltar() {
+  document.getElementById("menu").style.display = "grid";
+  document.querySelectorAll(".section").forEach(s => s.style.display = "none");
 }
+</script>
 
-.folder {
-  background: white;
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.folder:hover {
-  transform: scale(1.05);
-}
-
-.day {
-  display: none;
-  margin-top: 20px;
-}
-
-.day.active {
-  display: block;
-}
-
-.task {
-  background: white;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 8px;
-  background: #000;
-  color: white;
-  cursor: pointer;
-}
-
-  </style>
-</head>
-<body><h1>📁 Meu Planner de Férias</h1><div class="folders">
-  <div class="folder" onclick="openDay('segunda')">Segunda</div>
-  <div class="folder" onclick="openDay('terca')">Terça</div>
-  <div class="folder" onclick="openDay('quarta')">Quarta</div>
-  <div class="folder" onclick="openDay('quinta')">Quinta</div>
-  <div class="folder" onclick="openDay('sexta')">Sexta</div>
-  <div class="folder" onclick="openDay('sabado')">Sábado</div>
-  <div class="folder" onclick="openDay('domingo')">Domingo</div>
-</div><div id="segunda" class="day">
-  <h2>Segunda-feira</h2>
-  <div class="task"><input type="checkbox"> Academia</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-  <div class="task"><input type="checkbox"> Arrumar a casa</div>
-</div><div id="terca" class="day">
-  <h2>Terça-feira</h2>
-  <div class="task"><input type="checkbox"> Caminhada</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-</div><div id="quarta" class="day">
-  <h2>Quarta-feira</h2>
-  <div class="task"><input type="checkbox"> Academia</div>
-  <div class="task"><input type="checkbox"> Arrumar a casa</div>
-</div><div id="quinta" class="day">
-  <h2>Quinta-feira</h2>
-  <div class="task"><input type="checkbox"> Caminhada</div>
-  <div class="task"><input type="checkbox"> Estudar 1h</div>
-</div><div id="sexta" class="day">
-  <h2>Sexta-feira</h2>
-  <div class="task"><input type="checkbox"> Curso (7h–11h)</div>
-</div><div id="sabado" class="day">
-  <h2>Sábado</h2>
-  <div class="task"><input type="checkbox"> Visitar minha vó</div>
-</div><div id="domingo" class="day">
-  <h2>Domingo</h2>
-  <div class="task"><input type="checkbox"> Descanso</div>
-</div><button onclick="closeAll()">⬅ Voltar</button>
-
-<script>
-  function openDay(day) {
-    document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
-    document.getElementById(day).classList.add('active');
-    window.scrollTo(0
+</body>
+</html>
